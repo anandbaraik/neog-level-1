@@ -57,6 +57,64 @@ console.log(isBetweenOneAndTen(11)); // false
 
 // Write a function that takes a string as input and determines if it contains the word "hello".
 const isHelloPresent = (word) => word.toLowerCase().includes("hello");
-console.clear();
+
 console.log(isHelloPresent("Hello World")); // true
 console.log(isHelloPresent("World")); // false
+
+// Convert the given function into ES6 with least amount of characters.
+const defaultParamsFunc = (a, b, c = 4) => a * b * c;
+
+console.log(defaultParamsFunc(3, 1)); // 12
+console.log(defaultParamsFunc(3, 10)); // 120
+
+// Given an array numbers containing the numbers 1, 2, and 3. Use array destructuring to log each number to the console.
+
+const numbers = [1, 2, 3];
+// Your ES6 code here
+let [a, b, c] = numbers;
+
+console.log(a); // logs 1 to the console
+console.log(b); // logs 2 to the console
+console.log(c); // logs 3 to the console
+
+// Write a function that takes a number as input and determines if it is a multiple of 3.
+const isMultipleOfThree = (num) => num % 3 === 0;
+
+console.log(isMultipleOfThree(5)); // false
+console.log(isMultipleOfThree(9)); // true
+
+// Write a function which takes in a number as input and returns it after multiplying by 10.
+const multiplyByTen = (num) => num * 10;
+
+console.log(multiplyByTen(20)); // 200
+console.log(multiplyByTen(40)); // 400
+
+// Console individual values of the product object using object destructuring.
+const product = {
+  title: "iPhone",
+  price: 5999,
+  description: "The iPhone is a smartphone developed by Apple"
+};
+
+const { title, price, description } = product;
+
+console.log(title); // iPhone
+console.log(price); // 999
+console.log(description); // The iPhone is a smartphone developed by Apple
+
+//Create an object book with properties title, author, and pages. Create a function getBookDetails that takes a book object as a parameter and returns if the book has more than 100 pages.
+const getBookDetails = ({ title, author, pages }) => pages > 100;
+
+let book = {
+  title: "I too had a love story!",
+  author: "Ravinder singh",
+  pages: 250
+};
+
+let book2 = {
+  title: "I too had a love story!",
+  author: "Ravinder singh",
+  pages: 100
+};
+console.log(getBookDetails(book)); // logs 'true' if the pages are above 100
+console.log(getBookDetails(book2)); // logs 'false' if the pages are 100 or below
