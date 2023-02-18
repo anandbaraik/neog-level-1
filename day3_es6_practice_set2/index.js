@@ -21,7 +21,7 @@ const car2 = { make: 'Toyota', model: 'Camry', horsepower: 200 };
 console.log(isSportsCar(car1)); // true
 console.log(isSportsCar(car2)); // false
 
-// Write a function that takes an object person and a number num as arguments and returns true if the person's age plus num is greater than or equal to 21. Otherwise, it should return false.
+// Write a function that takes an object person and a number num as arguments and returns true if the person's age plus num is greater than or equal to 22. Otherwise, it should return false.
 
 // Your ES6 code here
 const isEligible = (person, num) => (person.age + num >= 22)
