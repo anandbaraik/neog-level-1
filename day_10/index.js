@@ -103,10 +103,9 @@ const increaseByTen = (arr) => {
     }
   }
   const printSentance = (obj) => {
-  let {name, school} = obj;
-  let {board:[sBoard], marks:[{subject:subj1, percent:percent1}, {subject:subj2, percent:percent2}]} = school;
-  return `My name is ${name}. I scored ${percent1} in ${subj1} and ${percent2} in ${subj2} from ${sBoard} board.`;
-  }
+    let {name, school:{board, marks:[{subject:subj1, percent:percent1}, {subject:subj2, percent:percent2}]}} = obj;
+    return `My name is ${name}. I scored ${percent1} in ${subj1} and ${percent2} in ${subj2} from ${board} board.`;
+    }
 
   console.log(printSentance(obj));
 
@@ -120,3 +119,19 @@ const increaseByTen = (arr) => {
       }
 
       console.log(newArr([1, 2, 3, 4, 5])); //0:1,1:2,2:3,3:4,4:5
+
+// Write a program using destructing to find a number in this object which is divisible both by 3 and 5
+const obj = {
+  a: 10,
+  b: 12,
+  arr: [10, 8, 15, 14]
+}
+
+const checkDivisiblity = ({a, b, arr}) => {
+  let nums = [...arr, a, b];
+  for(let num of nums) {
+    if((num % 3 == 0) && (num % 5 == 0)) return num;
+  }
+}
+
+console.log(checkDivisiblity(obj));
