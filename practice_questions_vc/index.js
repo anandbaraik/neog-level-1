@@ -135,3 +135,78 @@ const checkDivisiblity = ({a, b, arr}) => {
 }
 
 console.log(checkDivisiblity(obj));
+
+// Given an array of numbers, write a function that returns the difference between the largest and smallest numbers.
+const numbers = [10, 2, 7, 14, 5];
+
+const getTheDiff = (arr) => {
+  let obj = arr.reduce((acc, curr) => {
+    return {
+      min: Math.min(acc.min, curr),
+      max: Math.max(acc.max, curr),
+    }
+  }, {min:Infinity, max:-Infinity});
+
+  return obj.max - obj.min;
+}
+
+console.log(getTheDiff(numbers));// Output: 12
+
+// Given an array of strings, write a function that returns an array of objects representing each unique string and its frequency in the original array.
+const strings = ['apple', 'banana', 'apple', 'cherry', 'cherry', 'cherry'];
+
+
+const getStringFreq = (arr) => {
+  let obj =  arr.reduce((acc, curr) => {
+      if(acc.hasOwnProperty(curr)) {
+        acc[curr] = ++acc[curr]
+      } else {
+        acc[curr] = 1;
+      }
+      return acc;
+    }, {});
+
+  let strFreqArr = [];
+  for(let str in obj) {
+    strFreqArr.push({string: str, frequency: obj[str]});
+  }
+
+  return strFreqArr;
+}
+// Output: [{ string: 'apple', frequency: 2 }, { string: 'banana', frequency: 1 }, { string: 'cherry', frequency: 3 }]
+
+// Given an array of strings, write a function that returns an object representing the frequency of each character in the array. The keys of the object should be the characters themselves, and the values should be the number of times the character appears in the array.
+
+const getFreqOfChar = strings => strings.reduce((acc,cur) => {
+  for(let i = 0; i < cur.length ; i++) {
+    if(acc[cur[i]]) {
+      acc[cur[i]] += 1;
+    }else {
+      acc[cur[i]] = 1;
+    }
+  }
+ return acc;
+},{})
+
+const strings = ['apple', 'banana', 'cherry'];
+console.log(getFreqOfChar(strings));
+// Output: { a: 4, p: 2, l: 1, e: 2, b: 1, n: 2, c: 1, h: 1, r: 2, y: 1}
+
+// Given two objects, one with the actual data and the other one with a mapping for the keys to be renamed, write a function to rename the keys of the data object.
+const data = {
+  first_name: "John",
+  last_name: "doe"
+}
+
+const keysMap = {
+  first_name: "firstName",
+  last_name: "lastName"
+}
+
+const getDataWithReplacedKeys = (data, keysMap) => {
+  return Object.keys(data).reduce((acc, curr) => {
+    acc[keysMap[curr]] = data[curr];
+    return acc;
+  }, {})
+}
+console.log(getDataWithReplacedKeys(data, keysMap));
