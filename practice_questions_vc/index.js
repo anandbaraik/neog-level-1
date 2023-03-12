@@ -210,3 +210,64 @@ const getDataWithReplacedKeys = (data, keysMap) => {
   }, {})
 }
 console.log(getDataWithReplacedKeys(data, keysMap));
+
+// Given an array of objects representing employees, where each object has a name property, a department property, and a salary property, write a function that returns an object representing the total salary of each department. The keys of the object should be the department names, and the values should be the total salaries of all employees in that department.
+
+const employees = [
+  { name: 'Alice', department: 'Sales', salary: 50000 },
+  { name: 'Bob', department: 'Sales', salary: 60000 },
+  { name: 'Charlie', department: 'Marketing', salary: 55000 },
+  { name: 'David', department: 'Sales', salary: 70000 },
+  { name: 'Eve', department: 'Marketing', salary: 65000 },
+];
+
+const getSalaryDepartmentWise = (employees) => {
+  return employees.reduce((acc, {department, salary}) => {
+    if(acc.hasOwnProperty(department)) {
+      acc[department] = acc[department] + salary;
+    } else {
+      acc[department] = salary;
+    }
+    return acc;
+  }, {});
+}
+console.log(getSalaryDepartmentWise(employees))
+// Output: {Sales: 180000, Marketing: 120000}
+
+// Given an array of objects representing books, where each object has a title property and a year property, write a function that returns the titles of all books published before the year 2000, sorted alphabetically.
+const books = [
+  { title: 'The Great Gatsby', year: 1925 },
+  { title: 'To Kill a Mockingbird', year: 1960 },
+  { title: 'One Hundred Years of Solitude', year: 1967 },
+  { title: 'The Catcher in the Rye', year: 1951 },
+  { title: 'Beloved', year: 1987 },
+  { title: 'Brave New World', year: 1932 },
+];
+
+const getBooks = (books) => {
+  return books.reduce((acc, {title, year}) => {
+    if(year < 2000) {
+      acc = [...acc, title];
+    }
+    return acc;
+  }, []).sort();
+}
+console.log(getBooks(books));
+// Output: ["Beloved", "Brave New World", "One Hundred Years of Solitude", "The Catcher in the Rye", "The Great Gatsby", "To Kill a Mockingbird"]
+
+// Given an array of objects representing people, use the reduce function to find the average age of all the people.
+const people = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 30 },
+  { name: 'Charlie', age: 35 },
+  { name: 'Dave', age: 40 }
+];
+
+const getAverage = (people) => {
+  let totalAge = people.reduce((acc, {age}) => {
+    return acc + age;
+  }, 0);
+  return totalAge / people.length;
+}
+
+console.log(getAverage(people));
