@@ -271,3 +271,64 @@ const getAverage = (people) => {
 }
 
 console.log(getAverage(people));
+
+// Given an array of objects representing students, where each object has a name property and a grades property (an array of numbers), write a function that returns an array of objects representing the students who have an average grade of at least 90.
+
+const students = [
+  { name: 'Alice', grades: [90, 95, 92] },
+  { name: 'Bob', grades: [80, 85, 87] },
+  { name: 'Charlie', grades: [92, 88, 94] },
+  { name: 'David', grades: [75, 80, 82] },
+];
+
+const getStudents = (students) => {
+  return students.reduce((acc, curr) => {
+    let gradeSum = curr.grades.reduce((acc, grade) => acc + grade, 0);
+    let avgGrade = gradeSum/curr.grades.length;
+    if(avgGrade >= 90) {
+      let student = {
+        name: curr.name,
+        averageGrade: avgGrade
+      }
+      acc.push(student);
+    }
+    return acc;
+  }, []);
+}
+console.log(getStudents(students));
+// Output: [{ name: 'Alice', averageGrade: 92.33333333333333 }, { name: 'Charlie', averageGrade: 91.33333333333333 }]
+
+// Given an array of voters, objects count how many people voted using reduce
+
+var voters = [
+  {name:'Bob', age: 21, voted: true},
+  {name:'Jake', age: 20, voted: true},
+  {name:'Kate', age: 25, voted: false},
+  {name:'Sam', age: 20, voted: false},
+  {name:'Phil', age: 21, voted: true},
+  {name:'Ed' , age:20, voted:true},
+  {name:'Tami', age: 25, voted: true},
+  {name: 'Mary', age: 21, voted: false},
+  {name: 'Becky', age: 20, voted: false},
+  {name: 'Joey', age: 21, voted: true},
+  {name: 'Jeff', age: 20, voted: true},
+  {name: 'Zack', age: 40, voted: false}
+];
+
+let votesCountByAge = (voters) => {
+let votesObj = voters.reduce((acc, {age, voted}) => {
+    if(voted && acc.hasOwnProperty(age)) {
+      acc[age] = ++acc[age];
+    } else if(voted && !acc.hasOwnProperty(age)) {
+       acc[age] = 1;
+    }
+  return acc;
+  }, {});
+let votesCount = [];
+for(let age in votesObj) {
+  votesCount.push({age: age, count: votesObj[age]});
+}
+return votesCount;
+}
+console.log(votesCountByAge(voters));
+// [ {age: 21, count: 3}, {age: 20, count: 3}, {age: 25, count: 1} ]
