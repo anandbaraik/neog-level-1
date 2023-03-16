@@ -19,3 +19,14 @@
   }
 
   delay2(() => console.log('Delayed again'), 3000);
+
+  // Write a function repeat that takes a callback and a delay time as arguments and repeatedly executes the callback with the specified delay.
+
+  const repeat = (cb, time) => {
+    const timerId = setInterval(cb, time);
+    setTimeout(() => {
+      clearInterval(timerId);
+    }, 5000);
+  }
+
+  console.log(repeat(() => console.log('here!'), 1000));
