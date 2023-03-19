@@ -30,3 +30,31 @@
   }
 
   console.log(repeat(() => console.log('here!'), 1000));
+
+  // Write a function countdown that takes a number as an argument and logs the numbers from the argument down to 0, with a delay of 1 second between each number.
+
+const countdown = (num) => {
+    const timerId = setInterval(() => {
+      if(num == 0) clearInterval(timerId);
+      console.log(num);
+      --num;
+    }, 1000);
+  }
+
+  console.log(countdown(5));
+
+  // Write a function poll that takes a callback function and a delay time as arguments and executes the callback function repeatedly with the specified delay time until the callback function returns a truthy value.
+
+const poll = (cb, delay) => {
+    let counter = 0;
+    let timerid = setInterval(() => {
+        let isReturnedTrue = cb(counter);
+        if(isReturnedTrue) clearInterval(timerid);
+        ++counter;
+    }, delay);
+  }
+  const logSomething = (counter) => {
+    if(counter == 5) return true;
+    console.log('hello');
+  }
+  poll(logSomething, 1000);
