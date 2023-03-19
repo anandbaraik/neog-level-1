@@ -58,3 +58,25 @@ const poll = (cb, delay) => {
     console.log('hello');
   }
   poll(logSomething, 1000);
+
+  // Write a function ‘delayedGreeting’ that consoles a greeting message after a delay of 2 seconds using setTimeout. You can practice this question in any JS editor or your browser console.
+
+const delayedGreeting = (msg, delayTime) => {
+  setTimeout(() => {
+    console.log(msg);
+  }, delayTime);
+}
+
+delayedGreeting('Hello, welcome to my portfolio!', 2000);
+// Hello, welcome to my portfolio!
+
+// Write a function ‘delayedAddition’ that takes in two numbers and consoles their sum after a delay of 4 seconds using setTimeout. You can practice this question in any JS editor or your browser console.
+
+const delayedAddition = (a, b) => {
+  setTimeout(() => {
+    console.log(a+b);
+  }, 4000)
+}
+
+delayedAddition(2, 3);
+// 5
