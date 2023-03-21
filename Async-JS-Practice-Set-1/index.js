@@ -80,3 +80,31 @@ const delayedAddition = (a, b) => {
 
 delayedAddition(2, 3);
 // 5
+
+// Write a function ‘delayAlert’ that takes in a message ‘Hello, world!’ and a delay time in milliseconds, and displays the message in an alert box after the specified delay time using setTimeout. You can practice this question in any JS editor or your browser console.
+
+const delayedAlert = (msg, delayBy) => {
+  setTimeout(() => {
+    alert(msg);
+  }, delayBy);
+}
+
+delayedAlert('Hello, world!', 2000);
+// Should display an alert box with the message, Hello, world!
+
+// Write a function delayedLoop that takes a number 3 and consoles a message 'Hello' three times after a delay of 1 second each, using a for-loop and setTimeout. You can practice this question in any JS editor or your browser console.
+
+const delayedLoop = (num) => {
+  for(let i = 1; i<=num;i++) {
+    setTimeout(() => {
+      console.log('Hello');
+    }, 1000*i);
+  }
+}
+
+delayedLoop(3);
+// should print Hello three times after 1 second each
+// Output:
+// Hello -- after 1 second
+// Hello -- after another 1 second
+// Hello -- after another 1 second
